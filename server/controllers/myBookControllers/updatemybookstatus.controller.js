@@ -9,7 +9,7 @@ const updatemybookstatus = async (req,res) =>{
             return res.status(400).json({message:"Book not found"});
         }
         mybook.status = status;
-        mybook.save();
+        await mybook.save();
         return res.status(200).json({message:"My book status updated successfully"});
     } catch (error) {
         res.status(500).json({message:`Internal Server error ${error}`});

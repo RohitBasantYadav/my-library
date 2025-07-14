@@ -1,4 +1,6 @@
-const getbook = async (req, res) => {
+const BookModel = require("../../models/book.model");
+
+const getbook = async (_, res) => {
     try {
         const book = await BookModel.find();
         res.status(200).json({ message: "Book fetched successfully", bookData: book });

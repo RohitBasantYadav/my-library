@@ -7,8 +7,8 @@ const checkRoleMiddleware = require("../middlewares/checkRole.middleware");
 
 const bookRouter = express.Router();
 
-bookRouter.post("/admin/addbook",[authMiddleware,checkRoleMiddleware],addbook);
 bookRouter.get("/getbook",getbook);
+bookRouter.post("/admin/addbook",authMiddleware,checkRoleMiddleware,addbook);
 
 
 module.exports = bookRouter;

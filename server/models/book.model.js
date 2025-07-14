@@ -16,7 +16,7 @@ const bookSchema = new mongoose.Schema({
         type:String,
         maxLength:[1000,"Description cannot be more than 1000 characters"]
     },
-    converImage:{
+    coverImage:{
         type:String,
         default:"https://placehold.co/480x480"
     },

@@ -1,3 +1,4 @@
+const UserModel = require("../models/user.model");
 
 const checkRoleMiddleware = async (req,res,next) =>{
     const user = await UserModel.findById(req.user_id);

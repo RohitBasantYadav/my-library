@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 
 const register = async (req, res) => {
-    const { name, email, password, role, phone } = req.body;
+    const { name, email, password, role, phone,profilePic } = req.body;
     try {
         if(!req.body){
             return res.status(400).json({message:"All fields are required"});
@@ -19,12 +19,12 @@ const register = async (req, res) => {
         const avatar = `https://avatar.iran.liara.run/username?username=${name}`
         bcrypt.hash(password, 5, function (err, hash) {
             if (hash) {
-                if (role && phone && profilePic) {
+                if (phone && profilePic) {
                     const registerUser = new UserModel({ name, email, password: hash, role, phone, profilePic });
                     registerUser.save();
                     return res.status(201).json({ message: "User registered successfully" });
                 } else {
-                    const registerUser = new UserModel({ name, email, password: hash, profilePic:avatar });
+                    const registerUser = new UserModel({ name, email, password: hash, role, profilePic:avatar });
                     registerUser.save();
                     return res.status(201).json({ message: "User registered successfully" });
                 }

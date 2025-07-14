@@ -1,3 +1,4 @@
+const BookModel = require("../../models/book.model");
 
 
 const addbook = (req, res) => {
@@ -5,8 +6,8 @@ const addbook = (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
     }
     try {
-        const { title, author, description, converImage, availablity } = req.body;
-        const book = new BookModel({ title, author, description, converImage, availablity });
+        const { title, author, description, coverImage, availablity } = req.body;
+        const book = new BookModel({ title, author, description, coverImage, availablity });
         book.save();
         return res.status(201).json({ message: "Book added successfully" });
     } catch (error) {
